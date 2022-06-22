@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1")
 public class MainController {
 
-    private String userPath = "http://localhost:8080/api/v1/users";
-    private String filmsPath = "http://localhost:8080/api/v1/films";
+    private String userPath = "https://springg-api.herokuapp.com/users";
+    private String filmsPath = "https://springg-api.herokuapp.com/films";
     //    view main page
     @GetMapping
     public Main view() {
