@@ -5,6 +5,8 @@ public class Main {
     private String lastUpdate;
     private String user;
     private String films;
+    private String actors;
+    private String work;
 
     public String getAuthor() {
         return author;
@@ -36,5 +38,21 @@ public class Main {
 
     public void setFilms(String films) {
         this.films = films;
+    }
+
+    public String getActors() {
+        return actors;
+    }
+
+    public void setActors(String actors) {
+        this.actors = actors;
+    }
+
+    public String getWork() {
+        return work;
+    }
+
+    public void setWork(String work) {
+        this.work = work;
     }
 }

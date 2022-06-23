@@ -11,6 +11,9 @@ public class MainController {
 
     private String userPath = "https://springg-api.herokuapp.com/api/v1/users";
     private String filmsPath = "https://springg-api.herokuapp.com/api/v1/films";
+    private String actorsPath = "https://springg-api.herokuapp.com/api/v1/actors";
+    private String workPath = "https://springg-api.herokuapp.com/api/v1/work";
+
     //    view main page
     @GetMapping
     public Main view() {
@@ -19,6 +22,8 @@ public class MainController {
         main.setLastUpdate("21-06-2022");
         main.setUser(userPath);
         main.setFilms(filmsPath);
+        main.setActors(actorsPath);
+        main.setWork(workPath);
         return main;
     }
 }
