@@ -8,9 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface FilmRepository extends
-        PagingAndSortingRepository<Film, Long>,
-        JpaRepository<Film, Long> {
+public interface FilmRepository extends PagingAndSortingRepository<Film, Long>, JpaRepository<Film, Long> {
     // all crud database methods
 
 //    List<User> pagination(int offset,int pageSize);

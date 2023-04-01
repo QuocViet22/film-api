@@ -40,9 +40,7 @@ public class Main {
         this.films = films;
     }
 
-    public String getActors() {
-        return actors;
-    }
+    public String getActors() { return actors; }
 
     public void setActors(String actors) {
         this.actors = actors;
@@ -55,4 +53,5 @@ public class Main {
     public void setWork(String work) {
         this.work = work;
     }
+
 }

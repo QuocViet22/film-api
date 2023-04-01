@@ -1,11 +1,15 @@
 package com.springboot.api.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -35,14 +39,19 @@ public class Actor {
     @Column(name = "hair_color")
     private String hairColor;
 
-//    @Column(name = "films")
-//    private String films;
-
     @Column(name = "status")
     private String status;
 
     @Column(name = "url")
     private String url;
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            }, mappedBy = "actors")
+    @JsonBackReference
+    private Set<Film> films;
 
     public long getId() {
         return id;
@@ -106,5 +115,13 @@ public class Actor {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Set<Film> getFilms() {
+        return films;
+    }
+
+    public void setFilms(Set<Film> films) {
+        this.films = films;
     }
 }

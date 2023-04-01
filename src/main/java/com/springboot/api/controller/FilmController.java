@@ -2,17 +2,21 @@ package com.springboot.api.controller;
 
 import com.springboot.api.exception.ResourceNotFoundException;
 
+import com.springboot.api.model.Actor;
 import com.springboot.api.model.Film;
 import com.springboot.api.repository.FilmRepository;
 //import com.springboot.api.repository.WorkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @CrossOrigin("*")
 @RestController
@@ -24,8 +28,9 @@ public class FilmController {
 
     // get all films
     @GetMapping
-    public Page<Film> actorsPageable(Pageable pageable) {
-        return filmRepository.findAll(pageable);
+    public Page<Film> actorsPageable() {
+        Pageable paging = PageRequest.of(0, 3);
+        return filmRepository.findAll(paging);
     }
 
 //    public List<Film> getAllUsers() {

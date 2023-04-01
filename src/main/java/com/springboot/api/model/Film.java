@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -55,8 +56,16 @@ public class Film {
     @Column(name = "rt_score")
     private String rtScore;
 
-//    @Column(name = "actors")
-//    private List <Actor> listActors = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "film_actor",
+            joinColumns = @JoinColumn(name = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_id"))
+//    private List<Actor> actors = new ArrayList<>();
+    private Set<Actor> actors;
 
     @Column(name = "status")
     private String status;
@@ -160,10 +169,6 @@ public class Film {
         this.rtScore = rtScore;
     }
 
-//    public List<Actor> getListActors() { return listActors; }
-//
-//    public void setListActors(List<Actor> listActors) { this.listActors = listActors; }
-
     public String getStatus() {
         return status;
     }
@@ -178,5 +183,13 @@ public class Film {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Set<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(Set<Actor> actors) {
+        this.actors = actors;
     }
 }
